@@ -1,13 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace shopApp.webui.Identity
+namespace shopapp.webui.Identity
 {
-    public class User : IdentityUser
+    public class User: IdentityUser
     {
-
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
-        
     }
 }

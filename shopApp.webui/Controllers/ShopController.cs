@@ -1,11 +1,10 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using shopApp.business.Abstract;
-using shopApp.entity;
-using shopApp.webui.Models;
+using shopapp.business.Abstract;
+using shopapp.entity;
+using shopapp.webui.Models;
 
-
-namespace shopApp.webui.Controllers
+namespace shopapp.webui.Controllers
 {
     public class ShopController:Controller
     {

@@ -1,18 +1,16 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace shopApp.webui.Models
+namespace shopapp.webui.Models
 {
     public class LoginModel
     {
         [Required]
-        public string UserName { get; set; }
-
+        [DataType(DataType.EmailAddress)]
+        // public string UserName { get; set; }
+        public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-
-        public string Email{get; set;}
-
         public string ReturnUrl { get; set; }
     }
 }

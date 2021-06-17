@@ -8,13 +8,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using shopApp.business.Abstract;
-using shopApp.entity;
-using shopApp.webui.Extensions;
-using shopApp.webui.Identity;
-using shopApp.webui.Models;
+using shopapp.business.Abstract;
+using shopapp.entity;
+using shopapp.webui.Extensions;
+using shopapp.webui.Identity;
+using shopapp.webui.Models;
 
-namespace shopApp.webui.Controllers
+namespace shopapp.webui.Controllers
 {
     // sadikturan, efeturan, yigitbilgi => admin
     // adabilgi => customer
@@ -205,13 +205,11 @@ namespace shopApp.webui.Controllers
         }
         public IActionResult ProductCreate()
         {
-
-            
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> ProductCreate(ProductModel model,IFormFile file)
+        public IActionResult ProductCreate(ProductModel model)
         {
             if(ModelState.IsValid)
             {
@@ -221,23 +219,9 @@ namespace shopApp.webui.Controllers
                     Url = model.Url,
                     Price = model.Price,
                     Description = model.Description,
-                    IsApproved=model.IsApproved,
-                    IsHome=model.IsHome
-                  
-                   
+                    ImageUrl = model.ImageUrl
                 };
-                  if(file!=null)
-                {
-                    var extention = Path.GetExtension(file.FileName);
-                    var randomName = string.Format($"{Guid.NewGuid()}{extention}");
-                    entity.ImageUrl = randomName;
-                    var path = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot\\images",randomName);
-
-                    using(var stream = new FileStream(path,FileMode.Create))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
-                }
+                
                 if(_productService.Create(entity))
                 {                    
                     TempData.Put("message", new AlertMessage()
@@ -342,7 +326,7 @@ namespace shopApp.webui.Controllers
                     var extention = Path.GetExtension(file.FileName);
                     var randomName = string.Format($"{Guid.NewGuid()}{extention}");
                     entity.ImageUrl = randomName;
-                    var path = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot\\images",randomName);
+                    var path = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot\\img",randomName);
 
                     using(var stream = new FileStream(path,FileMode.Create))
                     {

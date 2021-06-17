@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using shopApp.entity;
+using shopapp.entity;
 
-namespace shopApp.webui.Models
+namespace shopapp.webui.Models
 {
     public class OrderListModel
     {

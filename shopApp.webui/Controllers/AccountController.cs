@@ -3,13 +3,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using shopApp.business.Abstract;
-using shopApp.webui.EmailServices;
-using shopApp.webui.Extensions;
-using shopApp.webui.Identity;
-using shopApp.webui.Models;
+using shopapp.business.Abstract;
+using shopapp.webui.EmailServices;
+using shopapp.webui.Extensions;
+using shopapp.webui.Identity;
+using shopapp.webui.Models;
 
-namespace shopApp.webui.Controllers
+namespace shopapp.webui.Controllers
 {
     [AutoValidateAntiforgeryToken]
     public class AccountController:Controller
@@ -18,12 +18,12 @@ namespace shopApp.webui.Controllers
         private SignInManager<User> _signInManager;
         private IEmailSender _emailSender;
         private ICartService _cartService;
-        public AccountController(UserManager<User> userManager,SignInManager<User> signInManager,IEmailSender emailSender,ICartService cartService)
+        public AccountController(ICartService cartService,UserManager<User> userManager,SignInManager<User> signInManager,IEmailSender emailSender)
         {
+            _cartService = cartService;
             _userManager=userManager;
             _signInManager=signInManager;
             _emailSender =emailSender;
-            _cartService=cartService;
         }
         public IActionResult Login(string ReturnUrl=null)
         {
@@ -42,8 +42,8 @@ namespace shopApp.webui.Controllers
                 return View(model);
             }
 
-             var user = await _userManager.FindByNameAsync(model.UserName);
-           // var user = await _userManager.FindByEmailAsync(model.Email);
+            // var user = await _userManager.FindByNameAsync(model.UserName);
+            var user = await _userManager.FindByEmailAsync(model.Email);
 
             if(user==null)
             {
@@ -139,6 +139,7 @@ namespace shopApp.webui.Controllers
                 {
                     // cart objesini oluştur.
                     _cartService.InitializeCart(user.Id);
+                    
                     TempData.Put("message", new AlertMessage()
                     {
                         Title="Hesabınız onaylandı.",

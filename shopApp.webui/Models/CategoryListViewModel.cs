@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using shopApp.entity;
+using shopapp.entity;
 
-namespace shopApp.webui.Models
+namespace shopapp.webui.Models
 {
     public class CategoryListViewModel
     {
-
-        public List<Category> Categories { get; set; }        
+        public List<Category> Categories { get; set; }
     }
 }

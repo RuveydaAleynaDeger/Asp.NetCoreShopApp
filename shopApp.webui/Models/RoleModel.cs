@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
-using shopApp.webui.Identity;
+using shopapp.webui.Identity;
 
-namespace shopApp.webui.Models
+namespace shopapp.webui.Models
 {
     public class RoleModel
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace shopApp.webui.Models
+namespace shopapp.webui.Models
 {
     public class UserDetailsModel
     {
@@ -10,8 +10,6 @@ namespace shopApp.webui.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
-
         public IEnumerable<string> SelectedRoles { get; set; }
-
     }
 }

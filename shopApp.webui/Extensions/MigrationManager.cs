@@ -1,10 +1,10 @@
-using shopApp.webui.Identity;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using shopApp.data.Concrete.EFCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using shopapp.data.Concrete.EfCore;
+using shopapp.webui.Identity;
 
-namespace shopApp.webui.Extensions
+namespace shopapp.webui.Extensions
 {
     public static class MigrationManager
     {
@@ -38,7 +38,7 @@ namespace shopApp.webui.Extensions
                     }
                 }
             }
-
+       
             return host;
         }
     }

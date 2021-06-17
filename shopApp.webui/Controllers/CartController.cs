@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using shopApp.business.Abstract;
-using shopApp.entity;
-using shopApp.webui.Identity;
-using shopApp.webui.Models;
+using shopapp.business.Abstract;
+using shopapp.entity;
+using shopapp.webui.Identity;
+using shopapp.webui.Models;
 
-namespace shopApp.webui.Controllers
+namespace shopapp.webui.Controllers
 {
     [Authorize]
     public class CartController:Controller
@@ -194,7 +194,7 @@ namespace shopApp.webui.Controllers
 
             foreach (var item in model.CartModel.CartItems)
             {
-                var orderItem = new shopApp.entity.OrderItem()
+                var orderItem = new shopapp.entity.OrderItem()
                 {
                     Price = item.Price,
                     Quantity = item.Quantity,
